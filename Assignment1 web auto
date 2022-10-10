@@ -1,0 +1,279 @@
+package Task1;
+
+public class Swap {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * Write a program to swap two number.
+		 * For example a=10 and b=20 output should be a=20 and b=10
+		 */
+
+		int a,b,c;
+		a=10;
+		b=20;
+		System.out.println("Before Swaping - a:" + a + " b:"+ b);
+		
+		c=b;
+		b=a;
+		a=c;
+		System.out.println("After Swaping - a:" + a + " b:"+ b);
+
+	}
+
+}
+
+
+package Task2;
+
+public class SumOfFiveNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * Write a program to print the sum of below 5 numbers.
+		 * 10,90.78,111,8989,7876
+		 */
+		
+		int num1,num3,num4,num5;
+		double num2,sum;
+		
+		num1=10;
+		num2=90.78;
+		num3=111;
+		num4=8989;
+		num5=7876;
+		
+		sum=num1+num2+num3+num4+num5;
+		
+		System.out.println("Sum of five numbers:" + sum);
+		
+	}
+
+}
+
+
+package Task3;
+public class AverageofFiveNumbers {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * Write a program to print the average of below 5 numbers.
+		 * 10,90.78,111,8989,7876
+		 */
+		
+		int num1,num3,num4,num5;
+		double num2,avg;
+		
+		num1=10;
+		num2=90.78;
+		num3=111;
+		num4=8989;
+		num5=7876;
+		
+		avg=(num1+num2+num3+num4+num5)/5;
+		
+		System.out.println("Sum of five numbers:" + avg);
+
+	}
+
+}
+
+package Task4;
+
+public class EvenNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * Write a program to print all even numbers from 1-200
+		 */
+		
+		int i;
+		
+		System.out.println("Even numbers from 1-200:");
+		
+		for (i=1;i<=200;i++)
+		{
+			if(i%2==0)
+			{
+				System.out.println(i);
+			}
+		}
+
+	}
+
+}
+
+package Task5;
+
+public class OddNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * Write a program to print all odd numbers from 1-50
+		 */
+		
+		int i;
+		
+		System.out.println("Odd numbers from 1-50:");
+		
+		for (i=1;i<=50;i++)
+		{
+			if(i%2!=0)
+			{
+				System.out.println(i);
+			}
+		}
+
+	}
+
+}
+
+package Task6;
+
+public class PrimeNumbers {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Write a program to print all prime numbers from 1-1000
+		 */
+		
+		int count,i,j;
+		
+		System.out.println("Prime numbers from 1- 1000:");
+		
+		for (i=1;i<=1000;i++)
+		{
+			count=0;
+			for(j=1;j<=i;j++)
+			{
+				if(i%j==0)
+				{
+					count++;
+				}
+			}
+			if(count==2)
+			{
+				System.out.println(i);
+			}
+		}
+			
+	}
+
+}
+
+package Task7;
+
+public class Pattern {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Write a program to print below pattern
+		 */
+		
+		int i,j;
+		for (i=1;i<=6;i++)
+		{
+			for(j=1;j<=i;j++)
+			{
+				System.out.print("* ");
+			}
+			System.out.println("");
+		}
+
+	}
+
+}
+
+package Task8;
+
+public class MarksScore {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * Write a program to print below students marks who have scored above 80
+		 */
+		
+		int stdMarks[]= {78,12,89,55,35};
+		
+		System.out.println("Students marks who have scored above 80 :");
+		for(int marks:stdMarks)
+		{
+			if(marks>80)
+			{
+				System.out.println(marks);
+			}
+		}
+
+	}
+
+}
+
+package Task9;
+
+public class BreakExecutionAt85 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Write a program which will break the current execution if it find number 85
+		 * Input – [12,34,66,85,900]
+		 */
+		
+		int numbers[] = {12,34,66,85,900};
+		
+		System.out.println("Break the current execution if it find number 85 :");
+		
+		for(int i : numbers)
+		{
+			if(i==85)
+			{
+				System.out.println("Number:" + i);
+				break;
+			}
+		}
+		
+	}
+
+}
+
+package Task10;
+
+public class BreakExecutionAtSelenium {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Write a program which will break the current execution if it find “Selenium”
+		 * Input – [“Java”,”JavaScript”,”Selenium”,”Python”,”Mukesh”]
+		 */
+
+		String  [] courses= {"Java","JavaScript","Selenium","Python","Mukesh"};
+		
+		System.out.println("Break the current execution if it find Selenium :");
+		
+		for(String str : courses)
+		{
+			if(str=="Selenium")
+			{
+				System.out.println("Course: " + str);
+				break;
+			}
+		}
+		
+	}
+
+}
+
+
