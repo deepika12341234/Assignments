@@ -1,0 +1,250 @@
+=======================================================================================================
+Task 1:
+=======================================================================================================
+
+package Assignment2;
+
+public class Trainer {
+	String name, department, email;
+	int id;
+
+	public Trainer(String trName, String trDepartment, String trEmail, int trId) {
+		name = trName;
+		department = trDepartment;
+		email = trEmail;
+		id = trId;
+
+	}
+
+	public void displayTrainerDetails() {
+		System.out.println("Name:" + name);
+		System.out.println("Department:" + department);
+		System.out.println("Email:" + email);
+		System.out.println("id:" + id);
+
+	}
+
+	public void seleniumTrainer() {
+		System.out.println("Trainer 1 can teach Selenium");
+	}
+
+	public void webDevTrainer() {
+		System.out.println("Trainer 2 can teach Web Development");
+	}
+
+	public void devOpsTrainer() {
+		System.out.println("Trainer 3 can teach DevOps");
+
+	}
+
+}
+
+package Assignment2;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Trainer Trainer1 = new Trainer("Mukesh", "Testing", "mukesh@gmail.com", 1);
+		System.out.println("Trainer 1 Details:");
+		Trainer1.seleniumTrainer();
+		Trainer1.displayTrainerDetails();
+		Trainer Trainer2 = new Trainer("Hitesh", "Dev", "mukesh@gmail.com", 2);
+		System.out.println("Trainer 2 Details:");
+		Trainer2.webDevTrainer();
+		Trainer2.displayTrainerDetails();
+		Trainer Trainer3 = new Trainer("Mukesh", "DevOps", "mukesh@gmail.com", 3);
+		System.out.println("Trainer 3 Details:");
+		Trainer3.devOpsTrainer();
+		Trainer3.displayTrainerDetails();
+	}
+
+}
+
+Output:
+=========
+Trainer 1 Details:
+Trainer 1 can teach Selenium
+Name:Mukesh
+Department:Testing
+Email:mukesh@gmail.com
+id:1
+Trainer 2 Details:
+Trainer 2 can teach Web Development
+Name:Hitesh
+Department:Dev
+Email:mukesh@gmail.com
+id:2
+Trainer 3 Details:
+Trainer 3 can teach DevOps
+Name:Mukesh
+Department:DevOps
+Email:mukesh@gmail.com
+id:3
+
+=======================================================================================================
+Task 2:
+=======================================================================================================
+package Assignment2;
+
+public class Trainer {
+	String name, department, email;
+	int id;
+
+	public Trainer(String trName, String trDepartment, String trEmail, int trId) {
+		name = trName;
+		department = trDepartment;
+		email = trEmail;
+		id = trId;
+
+	}
+
+	public void displayTrainerDetails() {
+		System.out.println("Name:" + name);
+		System.out.println("Department:" + department);
+		System.out.println("Email:" + email);
+		System.out.println("id:" + id);
+
+	}
+
+	public void seleniumTrainer() {
+		System.out.println("Trainer 1 can teach Selenium");
+	}
+
+	public void webDevTrainer() {
+		System.out.println("Trainer 2 can teach Web Development");
+	}
+
+	public void devOpsTrainer() {
+		System.out.println("Trainer 3 can teach DevOps");
+
+	}
+
+}
+
+package Assignment2;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				
+		Trainer[] trObj= {new Trainer("Mukesh", "Testing", "mukesh@gmail.com", 1),
+				         new Trainer("Hitesh", "Dev", "mukesh@gmail.com", 2),
+				         new Trainer("Mukesh", "DevOps", "mukesh@gmail.com", 3)};
+		System.out.println("Trainer 1 Details:");
+		trObj[0].seleniumTrainer();
+		trObj[0].displayTrainerDetails();
+		System.out.println("Trainer 2 Details:");
+		trObj[1].webDevTrainer();
+		trObj[1].displayTrainerDetails();
+		System.out.println("Trainer 3 Details:");
+		trObj[2].devOpsTrainer();
+		trObj[2].displayTrainerDetails();
+		
+	}
+
+}
+
+Output:
+=========
+Trainer 1 Details:
+Trainer 1 can teach Selenium
+Name:Mukesh
+Department:Testing
+Email:mukesh@gmail.com
+id:1
+Trainer 2 Details:
+Trainer 2 can teach Web Development
+Name:Hitesh
+Department:Dev
+Email:mukesh@gmail.com
+id:2
+Trainer 3 Details:
+Trainer 3 can teach DevOps
+Name:Mukesh
+Department:DevOps
+Email:mukesh@gmail.com
+id:3
+
+=======================================================================================================
+Task 3:
+=======================================================================================================
+package Assignment2;
+
+import java.util.Scanner;
+
+public class Student {
+	// name, email, phone, address, status
+	String name, email, phone, address, status;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int totalNumberOfStudents, stdNum;
+		Scanner scnr = new Scanner(System.in);
+		System.out.println("Please eneter number of students:");
+		totalNumberOfStudents = Integer.parseInt(scnr.nextLine());
+		Student[] stdObj = new Student[totalNumberOfStudents];
+		int i;
+		for (i = 0; i < totalNumberOfStudents; i++) {
+			stdObj[i] = new Student();
+			System.out.println("Enter name:");
+			stdObj[i].name = scnr.nextLine();
+			System.out.println("Enter email:");
+			stdObj[i].email = scnr.nextLine();
+			System.out.println("Enter phone:");
+			stdObj[i].phone = scnr.nextLine();
+			System.out.println("Enter address:");
+			stdObj[i].address = scnr.nextLine();
+			System.out.println("Enter status:");
+			stdObj[i].status = scnr.nextLine();
+		}
+
+		System.out.println("Please eneter which student details are you looking for");
+		stdNum = Integer.parseInt(scnr.nextLine());
+		scnr.close();
+		stdNum--;
+		System.out.println("Name:" + stdObj[stdNum].name);
+		System.out.println("Email:" + stdObj[stdNum].email);
+		System.out.println("Phone:" + stdObj[stdNum].phone);
+		System.out.println("Address:" + stdObj[stdNum].address);
+		System.out.println("Status:" + stdObj[stdNum].status);
+	}
+
+}
+
+Output:
+=========
+Please eneter number of students:
+2
+Enter name:
+Ramesh
+Enter email:
+rr@gmail.com
+Enter phone:
+223344
+Enter address:
+Chennai
+Enter status:
+Active
+Enter name:
+Rakesh
+Enter email:
+mm@gmail.com
+Enter phone:
+667788
+Enter address:
+Hyderabad
+Enter status:
+Active
+Please eneter which student details are you looking for
+2
+Name:Rakesh
+Email:mm@gmail.com
+Phone:667788
+Address:Hyderabad
+Status:Active
+
+
+
+
