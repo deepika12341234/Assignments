@@ -1,0 +1,405 @@
+Assignment 3
+======================================================================================================================================================================
+Task1
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+
+		/*
+		 * Write a program which can store List of Integer values and print all the
+		 * values using for loop.
+		 */
+
+		// First Method
+
+		List<Integer> lstNumerics = Arrays.asList(10, 20, 30, 40, 50, 60);
+
+		System.out.println("First Method - using List");
+
+		// printing all values using for loop
+
+		for (int i = 0; i < lstNumerics.size(); i++) {
+			System.out.println(lstNumerics.get(i));
+		}
+
+		// Second Method
+		ArrayList<Integer> arLstNumerics = new ArrayList<>();
+		arLstNumerics.add(10);
+		arLstNumerics.add(20);
+		arLstNumerics.add(30);
+		arLstNumerics.add(40);
+		arLstNumerics.add(50);
+		arLstNumerics.add(60);
+
+		System.out.println("Second Method - using ArrayList");
+
+		// printing all values using for loop
+
+		for (int i = 0; i < arLstNumerics.size(); i++) {
+			System.out.println(arLstNumerics.get(i));
+		}
+
+	}
+
+}
+
+Output:
+=======
+First Method - using List
+10
+20
+30
+40
+50
+60
+Second Method - using ArrayList
+10
+20
+30
+40
+50
+60
+======================================================================================================================================================================
+Task2
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program which can store List of Integer values and print all the
+		 * values using for each.
+		 *
+		 */
+
+		// First Method
+
+		List<Integer> lstNumerics = Arrays.asList(10, 20, 30, 40, 50, 60);
+
+		System.out.println("First Method - using List");
+
+		// printing all values using for each
+
+		for (int num : lstNumerics) {
+			System.out.println(num);
+		}
+
+		// Second Method
+		ArrayList<Integer> arLstNumerics = new ArrayList<>();
+		arLstNumerics.add(10);
+		arLstNumerics.add(20);
+		arLstNumerics.add(30);
+		arLstNumerics.add(40);
+		arLstNumerics.add(50);
+		arLstNumerics.add(60);
+
+		System.out.println("Second Method - using ArrayList");
+
+		// printing all values using for each
+
+		for (int num : arLstNumerics) {
+			System.out.println(num);
+		}
+
+	}
+
+}
+Output:
+=======
+First Method - using List
+10
+20
+30
+40
+50
+60
+Second Method - using ArrayList
+10
+20
+30
+40
+50
+60
+======================================================================================================================================================================
+Task3
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+public class Task3 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program which can store List of Integer values and print all the
+		 * values using iterator .
+		 *
+		 */
+
+		// First Method
+
+		List<Integer> lstNumerics = Arrays.asList(10, 20, 30, 40, 50, 60);
+
+		System.out.println("First Method - using List");
+
+		// printing all values using iterator
+
+		Iterator<Integer> lstNum = lstNumerics.iterator();
+
+		while (lstNum.hasNext()) {
+			System.out.println(lstNum.next());
+		}
+
+		// Second Method
+		ArrayList<Integer> arLstNumerics = new ArrayList<>();
+		arLstNumerics.add(10);
+		arLstNumerics.add(20);
+		arLstNumerics.add(30);
+		arLstNumerics.add(40);
+		arLstNumerics.add(50);
+		arLstNumerics.add(60);
+
+		System.out.println("Second Method - using ArrayList");
+
+		// printing all values using iterator
+
+		Iterator<Integer> arLstnum = arLstNumerics.iterator();
+
+		while (arLstnum.hasNext()) {
+			System.out.println(arLstnum.next());
+		}
+	}
+
+}
+Output:
+=======
+First Method - using List
+10
+20
+30
+40
+50
+60
+Second Method - using ArrayList
+10
+20
+30
+40
+50
+60
+
+======================================================================================================================================================================
+Task4
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+public class Task4 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program which will print sum of all numbers which is stored in list.
+		 */
+
+		List<Integer> lstNumerics = Arrays.asList(10, 10, 20, 30, 40, 50);
+
+		Iterator<Integer> num = lstNumerics.iterator();
+
+		int sum = 0;
+
+		while (num.hasNext()) {
+			sum = sum + num.next();
+		}
+
+		System.out.println("Sum :" + sum);
+
+	}
+
+}
+Output:
+=======
+Sum :160
+======================================================================================================================================================================
+Task5
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Task5 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program which will pick the values from Array and Store them List.
+		 * 
+		 */
+
+		int[] arrNumbers = { 10, 20, 30, 40, 50 };
+		List<Integer> lstNumbers = new ArrayList<>();
+
+		for (int i = 0; i < 5; i++) {
+			lstNumbers.add(arrNumbers[i]);
+		}
+
+		System.out.println("List of integer values: " + lstNumbers);
+
+		String[] arrCourses = { "C", "C++", "Java", ".Net" };
+
+		List<String> lstCourses = new ArrayList<>();
+
+		for (String course : arrCourses) {
+			lstCourses.add(course);
+		}
+
+		System.out.println("List of courses:" + lstCourses);
+
+	}
+
+}
+Output:
+=======
+List of integer values: [10, 20, 30, 40, 50]
+List of courses:[C, C++, Java, .Net]
+======================================================================================================================================================================
+Task6
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Task6 {
+
+	public static void main(String[] args) {
+		/*
+		 * Create a list of numbers 33,44,55,66,77,88 and perform below operation Remove
+		 * second element from list using index Remove second element from list using
+		 * value Add 90 at index 3 Get the length of list Print all values from list
+		 * using any values Convert List into array.
+		 * 
+		 */
+
+		List<Integer> lstNumbers = new ArrayList<>();
+
+		lstNumbers.add(33);
+		lstNumbers.add(44);
+		lstNumbers.add(55);
+		lstNumbers.add(66);
+		lstNumbers.add(77);
+		lstNumbers.add(88);
+		// Remove second element from list using index
+		lstNumbers.remove(1);
+		System.out.println("After removing second element from list using index:" + lstNumbers);
+		// Remove second element from list using value
+		Object scdElement = 55;
+		lstNumbers.remove(scdElement);
+		System.out.println("After removing second element from list using value:" + lstNumbers);
+		// Add 90 at index 3
+		lstNumbers.add(3, 90);
+		System.out.println("After adding 90 at index 3:" + lstNumbers);
+		// Get the length of list
+		System.out.println("Length of current list:" + lstNumbers.size());
+		// Print all values from list using any values
+
+		System.out.println("List of values from List:");
+		for (int i = 0; i < lstNumbers.size(); i++) {
+			System.out.println(lstNumbers.get(i));
+		}
+
+		// Convert List into array.
+
+		Object[] arrNumbers = lstNumbers.toArray();
+
+		System.out.println("List of values from Array:");
+
+		for (Object num : arrNumbers) {
+			System.out.println(num);
+		}
+
+	}
+
+}
+
+Output:
+=======
+After removing second element from list using index:[33, 55, 66, 77, 88]
+After removing second element from list using value:[33, 66, 77, 88]
+After adding 90 at index 3:[33, 66, 77, 90, 88]
+Length of current list:5
+List of values from List:
+33
+66
+77
+90
+88
+List of values from Array:
+33
+66
+77
+90
+88
+======================================================================================================================================================================
+Task7
+======================================================================================================================================================================
+package Assignment3;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Track7 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program which will display true if list contains Mobile else prints
+		 * false List - Web Automation, API Automation, Mobile Automation. Output – True
+		 * 
+		 */
+
+		List<String> lstCourses = Arrays.asList("Web Automation", "API Automation", "Mobile Automation");
+
+		System.out.println("List of Courses:" + lstCourses);
+
+		char res = 'N';
+
+		for (String course : lstCourses) {
+			if (course.contains("Mobile")) {
+				res = 'Y';
+				break;
+			}
+		}
+
+		if (res == 'Y')
+			System.out.println("True");
+		else
+			System.out.println("False");
+
+	}
+
+}
+
+Output:
+=======
+List of Courses:[Web Automation, API Automation, Mobile Automation]
+True
+
+
+
