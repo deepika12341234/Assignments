@@ -1,0 +1,196 @@
+Assignment 4
+======================================================================================================================================================================
+Task1
+======================================================================================================================================================================
+package Assignment4;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		/*
+		 * Create a list of String and print the values in reverse order Input – Java,
+		 * Selenium, TestNG, Git, Github Output- Github, Git, TestNG, Selenium, Java
+		 * 
+		 */
+
+		List<String> lstValues = Arrays.asList("Java", "Selenium", "TestNG", "Git", "Github");
+
+		for (int i = lstValues.size() - 1; i >= 0; i--) {
+			System.out.println(lstValues.get(i));
+		}
+
+	}
+
+}
+
+Output
+=========
+Github
+Git
+TestNG
+Selenium
+Java
+
+======================================================================================================================================================================
+Task2
+======================================================================================================================================================================
+package Assignment4;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program which will accept List of String and produce another List of
+		 * string of which will have only values which starts with git Input – Git,
+		 * Github, GitLab,GitBash, Selenium, Java, Maven Output- Git, Github, Gitlab,
+		 * GitBash
+		 * 
+		 */
+
+		List<String> lstValues = Arrays.asList("Git", "Github", "GitLab", "GitBash", "Selenium", "Java", "Maven");
+
+		List<String> resValues = new ArrayList<>();
+
+		for (String value : lstValues) {
+			if (value.startsWith("Git"))
+				resValues.add(value);
+
+		}
+
+		System.out.println(resValues);
+
+	}
+
+}
+
+Output
+=========
+[Git, Github, GitLab, GitBash]
+======================================================================================================================================================================
+Task3
+======================================================================================================================================================================
+package Assignment4;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+public class Task3 {
+
+	public static void main(String[] args) {
+		/*
+		 * Write a program that will remove duplicate values from List Input – Java,
+		 * TestNG, Maven, Java, Output – Java, TestNG, Maven
+		 * 
+		 */
+
+		List<String> lstValues = new ArrayList<>();
+		lstValues.add("Java");
+		lstValues.add("TestNG");
+		lstValues.add("Maven");
+		lstValues.add("Java");
+
+		for (int i = 0; i < lstValues.size(); i++) {
+			for (int j = i + 1; j < lstValues.size(); j++) {
+				if (lstValues.get(i).equals(lstValues.get(j))) {
+					lstValues.remove(j);
+				}
+
+			}
+
+		}
+
+		System.out.println(lstValues);
+
+	}
+
+}
+
+Output
+=========
+[Java, TestNG, Maven]
+
+======================================================================================================================================================================
+Task4
+======================================================================================================================================================================
+package Assignment4;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Task4 {
+
+	public static void main(String[] args) {
+		/*
+		 * Create a list of values and print the second element, second last element.
+		 * Input – 10,45, 90,45, 23, 90, 44 Output – 45,90
+		 * 
+		 */
+
+		List<Integer> lstValues = Arrays.asList(10, 45, 90, 45, 23, 90, 44);
+
+		System.out.println("List of values:" + lstValues);
+
+		System.out.println("Second element from the given list :" + lstValues.get(1));
+		System.out.println("Second last element from the given list :" + lstValues.get(lstValues.size() - 2));
+
+	}
+
+}
+Output
+=========
+List of values:[10, 45, 90, 45, 23, 90, 44]
+Second element from the given list :45
+Second last element from the given list :90
+======================================================================================================================================================================
+Task5
+======================================================================================================================================================================
+package Assignment4;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Task5 {
+
+	public static void main(String[] args) {
+		/*
+		 * Create a list which can accept another list as an element. List 1- 11,22,33
+		 * List 2- 9,19,29 List 3- 7,17,27
+		 * 
+		 */
+
+		// ArrayList<ArrayList<Integer>> l1=new ArrayList<>();
+
+		ArrayList<Integer> list1 = new ArrayList<>();
+		list1.add(11);
+		list1.add(22);
+		list1.add(33);
+
+		ArrayList<Integer> list2 = new ArrayList<>();
+		list2.add(9);
+		list2.add(19);
+		list2.add(29);
+
+		ArrayList<Integer> list3 = new ArrayList<>();
+		list3.add(7);
+		list3.add(17);
+		list3.add(27);
+
+		List<ArrayList<Integer>> arrLst = Arrays.asList(list1, list2, list3);
+		System.out.println(arrLst);
+
+	}
+
+}
+
+Output
+=========
+[[11, 22, 33], [9, 19, 29], [7, 17, 27]]
