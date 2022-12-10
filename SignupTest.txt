@@ -1,0 +1,36 @@
+package seleniumwebdriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Test {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://ineuron-courses.vercel.app/signup");
+		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("deepika");
+		driver.findElement(By.id("email")).sendKeys("deepika.avula019@gmail.com");
+		driver.findElement(By.id("password")).sendKeys("deepika");
+		driver.findElement(By.xpath("//label[text()='Testing']")).click();
+		driver.findElement(By.xpath("//input[@value='Female']")).click();
+		WebElement ele = driver.findElement(By.id("state"));
+		Select drp = new Select(ele);
+		drp.selectByVisibleText("Tamil Nadu");
+		Thread.sleep(3000);
+
+		driver.findElement(By.xpath("//button[text()='Sign up']")).click();
+
+		Thread.sleep(3000);
+
+		driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("deepika.avula019@gmail.com");
+		driver.findElement(By.id("password1")).sendKeys("deepika");
+		driver.findElement(By.xpath("//button[text()='Sign in']")).click();
+
+	}
+
+}
