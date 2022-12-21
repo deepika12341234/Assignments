@@ -1,0 +1,317 @@
+Assignment 5
+======================================================================================================================================================================
+Task1
+======================================================================================================================================================================
+package assignment5;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		/*
+		 * Open below application
+		 * https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+		 * 
+		 * Capture the application url and verify url ends with “login”
+		 * 
+		 * Capture the application url and verify url contains “demo”
+		 * 
+		 * Capture the application title and verify title contains HRM
+		 * 
+		 */
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		// Capture the application url and verify url ends with “login”
+		String url = driver.getCurrentUrl();
+		System.out.println("Application URL:" + url);
+		if (url.endsWith("login"))
+			System.out.println("Application URL ends with login");
+		else
+			System.out.println("Application URL does not end with login");
+
+		// Capture the application url and verify url contains “demo”
+		if (url.contains("demo"))
+			System.out.println("Application URL contains demo");
+		else
+			System.out.println("Application URL does not contain demo");
+
+		// Capture the application title and verify title contains HRM
+		String title = driver.getTitle();
+		System.out.println("Application Title:" + title);
+		if (title.contains("HRM"))
+			System.out.println("Application title contains HRM");
+		else
+			System.out.println("Application title does not contain HRM");
+
+		driver.quit();
+	}
+
+}
+
+Output
+=========
+Application URL:https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+Application URL ends with login
+Application URL contains demo
+Application Title:OrangeHRM
+Application title contains HRM
+
+======================================================================================================================================================================
+Task2
+======================================================================================================================================================================
+package assignment5;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		/*
+		 * Open below application and verify logo is present or not
+		 * https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+		 * 
+		 */
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		
+		WebElement ele = driver.findElement(By.xpath("//img[contains(@alt,'company-branding')]"));
+		String srcValue = ele.getAttribute("src");
+		if (srcValue.contains(".png"))
+			System.out.println("Logo is present");
+		else
+			System.out.println("Logo did not present");
+
+		driver.quit();
+	}
+
+}
+
+Output
+=========
+Logo is present
+
+======================================================================================================================================================================
+Task3
+======================================================================================================================================================================
+package assignment5;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task3 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		/*
+		 * Open below application and verify that footer has 4 social media icons
+		 * https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+		 * 
+		 */
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		List<WebElement> lstIcons = driver.findElements(By.xpath("//*[name()='svg'] //parent::a"));
+
+		// First Method
+		System.out.println("First Method:");
+		System.out.println("Size:" + lstIcons.size());
+		if (lstIcons.size() == 4)
+			System.out.println("footer has 4 social media icons");
+		else
+			System.out.println("footer does not have 4 social media icons");
+
+		// Second Method
+		String socialMediaSites[] = { "linkedin", "facebook", "twitter", "youtube" };
+
+		int iconsCount = 0;
+
+		for (WebElement ele : lstIcons) {
+			String site = ele.getAttribute("href");
+			for (String str : socialMediaSites) {
+				if (site.contains(str))
+					iconsCount++;
+			}
+		}
+		
+		System.out.println("Second Method:");
+		System.out.println("Icons Count:" + iconsCount);
+		if (iconsCount == 4)
+			System.out.println("footer has 4 social media icons");
+		else
+			System.out.println("footer does not have 4 social media icons");
+
+		driver.quit();
+
+	}
+
+}
+
+Output
+=========
+First Method:
+Size:4
+footer has 4 social media icons
+Second Method:
+Icons Count:4
+footer has 4 social media icons
+
+======================================================================================================================================================================
+Task4
+======================================================================================================================================================================
+package assignment5;
+
+import java.time.Duration;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task4 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		/*
+		 * Open the below application and verify the capture all href values from social
+		 * media icons. Store all 4 href values in map in below format. FaceBook - fburl
+		 * Twitter - Twitter url Youtube - Youtube URL Linkedin - Linkedin URL
+		 * https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+		 * 
+		 * 
+		 */
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		List<WebElement> lstHref = driver.findElements(By.xpath("//div[@class='orangehrm-login-footer-sm']//a"));
+		Map<String, String> socialMediaSites = new LinkedHashMap<String, String>();
+		for (WebElement href : lstHref) {
+			String hrefValue = href.getAttribute("href");
+			if (hrefValue.contains("facebook"))
+				socialMediaSites.put("FaceBook ", hrefValue);
+			if (hrefValue.contains("linkedin"))
+				socialMediaSites.put("Linkedin", hrefValue);
+			if (hrefValue.contains("twitter"))
+				socialMediaSites.put("Twitter", hrefValue);
+			if (hrefValue.contains("youtube"))
+				socialMediaSites.put("Youtube", hrefValue);
+
+		}
+		System.out.println("Social Media href values:" + socialMediaSites);
+
+		for (String site : socialMediaSites.keySet()) {
+			System.out.println(site + ":" + socialMediaSites.get(site));
+
+		}
+		driver.quit();
+	}
+}
+
+Output
+=========
+Social Media href values:{Linkedin=https://www.linkedin.com/company/orangehrm/mycompany/, FaceBook =https://www.facebook.com/OrangeHRM/, Twitter=https://twitter.com/orangehrm?lang=en, Youtube=https://www.youtube.com/c/OrangeHRMInc}
+Linkedin:https://www.linkedin.com/company/orangehrm/mycompany/
+FaceBook :https://www.facebook.com/OrangeHRM/
+Twitter:https://twitter.com/orangehrm?lang=en
+Youtube:https://www.youtube.com/c/OrangeHRMInc
+
+======================================================================================================================================================================
+Task5
+======================================================================================================================================================================
+package assignment5;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task5 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		/*
+		 * Open the below application and verify the capture all href values from social
+		 * media icons. Run a loop and verify if any url contains youtube. If youtube
+		 * found then break the loop.
+		 * https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+		 * 
+		 */
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		List<WebElement> lstHref = driver.findElements(By.xpath("//div[@class='orangehrm-login-footer-sm']//a"));
+
+		for (WebElement ele : lstHref) {
+			String hrefValue = ele.getAttribute("href");
+			if (hrefValue.contains("youtube")) {
+				System.out.println("URL:" + hrefValue);
+				break;
+			}
+
+		}
+
+		driver.quit();
+	}
+
+}
+
+
+Output
+=========
+URL:https://www.youtube.com/c/OrangeHRMInc
