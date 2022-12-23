@@ -1,0 +1,242 @@
+Assignment 7
+======================================================================================================================================================================
+Task1
+======================================================================================================================================================================
+package assignment7;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Chrome
+		WebDriver driver = new ChromeDriver();
+
+		// Firefox
+		// WebDriver driver= new FirefoxDriver();
+
+		// Edge
+		// WebDriver driver = new EdgeDriver();
+
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+
+		List<WebElement> elements = driver.findElements(By.xpath("//span[text()='Required']"));
+		if (elements.size() == 2) {
+			System.out.println("Required fields are present for username and password");
+		}
+
+		String usernameCssValue = driver.findElement(By.name("username")).getCssValue("border");
+		String passwordCssValue = driver.findElement(By.name("password")).getCssValue("border");
+
+		if (usernameCssValue.contains("1px")) {
+			System.out.println("Username has border of 1px");
+		}
+
+		if (passwordCssValue.contains("1px")) {
+			System.out.println("Password has border of 1px");
+		}
+
+		driver.quit();
+
+	}
+
+}
+
+Output
+=========
+Required fields are present for username and password
+Username has border of 1px
+Password has border of 1px
+
+======================================================================================================================================================================
+Task2
+======================================================================================================================================================================
+package assignment7;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Chrome
+		WebDriver driver = new ChromeDriver();
+
+		// Firefox
+		// WebDriver driver= new FirefoxDriver();
+
+		// Edge
+		// WebDriver driver = new EdgeDriver();
+
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys("admin");
+		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		WebElement element = driver.findElement(By.xpath("//label[text()='Password']//following::span"));
+		if (element.getText().equals("Required")) {
+			System.out.println("Password field is showing the required message");
+		}
+
+		driver.quit();
+	}
+
+}
+
+Output
+=========
+Password field is showing the required message
+
+======================================================================================================================================================================
+Task3
+======================================================================================================================================================================
+package assignment7;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Chrome
+		WebDriver driver = new ChromeDriver();
+
+		// Firefox
+		// WebDriver driver= new FirefoxDriver();
+
+		// Edge
+		// WebDriver driver = new EdgeDriver();
+
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.findElement(By.name("username")).sendKeys("admin");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("password");
+		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		String validationMessage = driver.findElement(By.xpath("//p[text()='Invalid credentials']")).getText();
+		if (validationMessage.equals("Invalid credentials")) {
+			System.out.println("Validation message contains Invalid credentials");
+		}
+
+		driver.quit();
+	}
+
+}
+
+
+Output
+=========
+Validation message contains Invalid credentials
+
+======================================================================================================================================================================
+Task4
+======================================================================================================================================================================
+package assignment7;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Task4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Chrome
+		WebDriver driver = new ChromeDriver();
+
+		// Firefox
+		// WebDriver driver= new FirefoxDriver();
+
+		// Edge
+		// WebDriver driver = new EdgeDriver();
+		
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.findElement(By.name("username")).sendKeys("Admin");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		String url = driver.getCurrentUrl();
+		if (url.contains("dashboard")) {
+			System.out.println("Dashboard URL:" + url);
+		}
+
+		driver.findElement(By.xpath("//img[@alt='profile picture' and @class='oxd-userdropdown-img']")).click();
+		driver.findElement(By.xpath("//a[text()='Logout']")).click();
+		String loginUrl = driver.getCurrentUrl();
+		if (loginUrl.contains("opensource-demo.orangehrmlive.com") && loginUrl.endsWith("login")) {
+			System.out.println("Login URL:" + loginUrl);
+			System.out.println("user is able to navigate to the login page");
+		}
+		
+		driver.quit();
+
+	}
+
+}
+
+Output
+=========
+Dashboard URL:https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
+Login URL:https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+user is able to navigate to the login page
+
+======================================================================================================================================================================
+Task5
+======================================================================================================================================================================
+verified above tests in Chrome, Firefox and Edge Browser by applying below lines of code at required place, all are working as expected.
+
+// Chrome
+WebDriver driver = new ChromeDriver();
+
+// Firefox
+WebDriver driver= new FirefoxDriver();
+
+// Edge
+WebDriver driver = new EdgeDriver();
+
+
+
+
+
