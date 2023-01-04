@@ -1,0 +1,186 @@
+Assignment 8
+======================================================================================================================================================================
+Task1
+======================================================================================================================================================================
+package assignment8;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		String searchText = "Facebook helps you connect and share with the people in your life";
+		String elementText = driver.findElement(By.cssSelector("h2._8eso")).getText();
+		if (elementText.contains(searchText)) {
+			System.out.println("The specific element text contains the expected text:" + searchText);
+		}
+
+	}
+
+}
+
+Output
+=========
+The specific element text contains the expected text:Facebook helps you connect and share with the people in your life
+
+======================================================================================================================================================================
+Task2
+======================================================================================================================================================================
+package assignment8;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Task2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		List<WebElement> elements = driver.findElements(By.xpath("//div[@id='pageFooterChildren']//li"));
+		List<String> lstLinkTexts = new ArrayList<String>();
+		for (WebElement ele : elements) {
+			String linkText = ele.getText();
+			lstLinkTexts.add(linkText);
+		}
+
+		if (lstLinkTexts.contains("Create Page")) {
+			driver.findElement(By.xpath("//a[text()='Create Page']")).click();
+			String currentUrl = driver.getCurrentUrl();
+			System.out.println("Create Page URL:" + currentUrl);
+			boolean createPageStatus = driver.findElement(By.xpath("//div[text()='Create a Page']")).isDisplayed();
+			System.out.println("Element value from Create Page:"
+					+ driver.findElement(By.xpath("//div[text()='Create a Page']")).getText());
+			System.out.println("Create Page Status:" + createPageStatus);
+
+		}
+
+	}
+
+}
+
+Output
+=========
+Create Page URL:https://www.facebook.com/pages/create/?ref_type=site_footer
+Element value from Create Page:Create a Page
+Create Page Status:true
+
+======================================================================================================================================================================
+Task3
+======================================================================================================================================================================
+package assignment8;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Task3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		// XPath
+		driver.findElement(By.xpath("//a[@role='button' and text()='Create New Account']")).click();
+		driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys("TestFN");
+		driver.findElement(By.xpath("//input[@aria-label='Surname']")).sendKeys("SR");
+		driver.findElement(By.xpath("//input[contains(@aria-label,'Mobile')]")).sendKeys("1122334455");
+		driver.findElement(By.xpath("//input[@autocomplete='new-password']")).sendKeys("password");
+		WebElement dayElement = driver.findElement(By.xpath("//select[@aria-label='Day']"));
+		Select dayDrp = new Select(dayElement);
+		dayDrp.selectByVisibleText("20");
+		WebElement monthElement = driver.findElement(By.xpath("//select[@aria-label='Month']"));
+		Select monthDrp = new Select(monthElement);
+		monthDrp.selectByValue("7");
+		WebElement yearElement = driver.findElement(By.xpath("//select[@aria-label='Year']"));
+		Select yearDrp = new Select(yearElement);
+		yearDrp.selectByVisibleText("1983");
+		driver.findElement(By.xpath("//input[@value='2']")).click();
+		driver.findElement(By.xpath("//button[@name='websubmit' and text()='Sign Up']")).click();
+
+	}
+
+}
+
+======================================================================================================================================================================
+Task4
+======================================================================================================================================================================
+package assignment8;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Task4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		// CSS Selector
+		driver.findElement(By.cssSelector("a[data-testid*='registration']")).click();
+		driver.findElement(By.cssSelector("input[name='firstname']")).sendKeys("TestFN");
+		driver.findElement(By.cssSelector("input[aria-label*='Sur']")).sendKeys("SR");
+		driver.findElement(By.cssSelector("input[aria-label^='Mobile']")).sendKeys("1122334455");
+		driver.findElement(By.cssSelector("input[aria-label$='password']")).sendKeys("password");
+		WebElement dayElement = driver.findElement(By.cssSelector("#day"));
+		Select dayDrp = new Select(dayElement);
+		dayDrp.selectByVisibleText("20");
+		WebElement monthElement = driver.findElement(By.cssSelector("#month"));
+		Select monthDrp = new Select(monthElement);
+		monthDrp.selectByValue("7");
+		WebElement yearElement = driver.findElement(By.cssSelector("#year"));
+		Select yearDrp = new Select(yearElement);
+		yearDrp.selectByVisibleText("1983");
+		driver.findElement(By.cssSelector("input[value='1']")).click();
+		driver.findElement(By.cssSelector("button[name='websubmit']")).click();
+	}
+
+}
+
+
+
+
+
+
