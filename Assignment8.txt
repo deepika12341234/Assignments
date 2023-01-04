@@ -26,6 +26,8 @@ public class Task1 {
 		if (elementText.contains(searchText)) {
 			System.out.println("The specific element text contains the expected text:" + searchText);
 		}
+		
+		driver.quit();
 
 	}
 
@@ -77,6 +79,8 @@ public class Task2 {
 			System.out.println("Create Page Status:" + createPageStatus);
 
 		}
+		
+		driver.quit();
 
 	}
 
@@ -129,6 +133,8 @@ public class Task3 {
 		yearDrp.selectByVisibleText("1983");
 		driver.findElement(By.xpath("//input[@value='2']")).click();
 		driver.findElement(By.xpath("//button[@name='websubmit' and text()='Sign Up']")).click();
+		
+		driver.quit();
 
 	}
 
@@ -175,6 +181,8 @@ public class Task4 {
 		yearDrp.selectByVisibleText("1983");
 		driver.findElement(By.cssSelector("input[value='1']")).click();
 		driver.findElement(By.cssSelector("button[name='websubmit']")).click();
+		
+		driver.quit();
 	}
 
 }
