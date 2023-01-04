@@ -51,8 +51,11 @@ public class Task {
 		driver.findElement(By.cssSelector("#password1")).sendKeys("Password");
 		driver.findElement(By.xpath("//button[text()='Sign in']")).click();
 		System.out.println("User successfully created");
+		
+		driver.quit();
 
 	}
+	
 
 }
 
