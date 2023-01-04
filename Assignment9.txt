@@ -1,0 +1,64 @@
+Assignment 9
+======================================================================================================================================================================
+Task
+======================================================================================================================================================================
+package assignment9;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Task {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+		driver.manage().window().maximize();
+		driver.get("https://ineuron-courses.vercel.app/signup");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		System.out.println("Before filling the details Sign up button status:"
+				+ driver.findElement(By.xpath("//button[text()='Sign up']")).isEnabled());
+
+		driver.findElement(By.cssSelector("input#name")).sendKeys("PractiseUser");
+		driver.findElement(By.id("email")).sendKeys("puseremail@gmail.com");
+		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("Password");
+		driver.findElement(By.xpath("//label[text()='Testing']//preceding::input[1]")).click();
+		driver.findElement(By.cssSelector("input[value='Female']")).click();
+		WebElement drpElement = driver.findElement(By.id("state"));
+		Select selectDrp = new Select(drpElement);
+		selectDrp.selectByVisibleText("Andhra Pradesh");
+		System.out.println("After filling the details Sign up button status:"
+				+ driver.findElement(By.xpath("//button[text()='Sign up']")).isEnabled());
+		try {
+			driver.findElement(By.xpath("//button[text()='Sign up']")).click();
+		} catch (Exception e) {
+			System.out.println("Sign up button click failed, retry with JS");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			WebElement signupElement = driver.findElement(By.xpath("//button[text()='Sign up']"));
+			js.executeScript("arguments[0].click()", signupElement);
+		}
+
+		driver.findElement(By.xpath("//input[@id='email1']")).sendKeys("puseremail@gmail.com");
+		driver.findElement(By.cssSelector("#password1")).sendKeys("Password");
+		driver.findElement(By.xpath("//button[text()='Sign in']")).click();
+		System.out.println("User successfully created");
+
+	}
+
+}
+
+Output
+=========
+Before filling the details Sign up button status:false
+After filling the details Sign up button status:true
+Sign up button click failed, retry with JS
+User successfully created
